@@ -1,0 +1,5 @@
+https://github.com/nesvila90/credibancorepo
+https://github.com/jidaniel500/credibancoPrueba/blob/main/tarjetascreditoapi/src/main/java/tarjetas/servicios/TarjetaService.java
+https://github.com/Santiago-ca/CredibancoAPI/blob/master/src/main/java/com/credibanco/assessment/card/controller/CardController.java
+https://stripe.com/docs/api
+https://github.com/nortal/posxmladapter/blob/c8f7092f70e381f034dd221249489711b6f70a44/src/main/java/eu/wm/posxml/domain/Card.java#L16s

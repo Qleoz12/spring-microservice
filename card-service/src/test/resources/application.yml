@@ -1,0 +1,15 @@
+app:
+  greet:
+    msg: Hello Microservice!
+# Spring properties
+spring:
+  cloud:
+    discovery:
+      enabled: false
+  aop:
+    auto: false
+
+    
+eureka:
+  client:
+    enabled: false

@@ -1,0 +1,117 @@
+version: "3.3"
+services:
+  db:
+    build: "../database-image"
+    image: "microservices-mysql-db"
+    container_name: "mysql-container"
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_ROOT_PASSWORD=S3cret
+      - MYSQL_PASSWORD=An0thrS3crt
+      - MYSQL_USER=citizix_user
+      - MYSQL_DATABASE=microservices
+    restart: unless-stopped
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    ports:
+      - "3336:3306"
+    cpus: 0.5
+    mem_limit: 512m
+    mem_reservation: 128m
+    networks:
+      - mybridge
+
+  discovery:
+    build: "../discovery"
+    image: "discovery-image"
+    container_name: "discovery-container"
+    restart: always
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./discovery:/home/app
+    cpus: 0.5
+    mem_limit: 512m
+    mem_reservation: 128m
+    networks:
+      - mybridge
+
+  card-service:
+    build: "../card-service"
+    image: "card-service-image"
+    container_name: "card-service-container"
+    restart: always
+    ports:
+      - "8082:8082"
+    volumes:
+      - ./card-service:/home/app
+    depends_on:
+      - discovery
+    cpus: 0.5
+    mem_limit: 512m
+    mem_reservation: 128m
+    networks:
+      - mybridge
+
+  transaction-service:
+    build: "../transaction-service"
+    image: "transaction-service-image"
+    container_name: "transaction-service-container"
+    restart: always
+    ports:
+      - "8083:8083"
+    volumes:
+      - ./transaction-service:/home/app
+    depends_on:
+      - discovery
+    cpus: 0.5
+    mem_limit: 512m
+    mem_reservation: 128m
+    networks:
+      - mybridge
+
+  gateway:
+    build: "../gateway"
+    image: "gateway-mysql-image"
+    container_name: "gateway-mysql-container"
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./gateway:/home/app
+    depends_on:
+      - discovery
+      - card-service
+      - transaction-service
+    cpus: 0.5
+    mem_limit: 512m
+    mem_reservation: 128m
+    networks:
+      - mybridge
+
+#  web-angular:
+#    build:
+#      context: "web-angular"
+#      args:
+#        PROFILE: docker
+#    image: "web-angular-image"
+#    container_name: "web-angular-container"
+#    restart: always
+#    ports:
+#    - "4200:80"
+#    volumes:
+#    - './web-angular:/app'
+#    depends_on:
+#      - gateway
+#    cpus: 0.5
+#    mem_limit: 128m
+#    mem_reservation: 64m
+#    networks:
+#      - mybridge
+
+networks:
+  mybridge:
+    driver: bridge
+
+
+
