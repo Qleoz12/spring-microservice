@@ -1,7 +1,0 @@
-FROM openjdk:11-jre
-MAINTAINER sourabhh
-EXPOSE 8080
-COPY maven /maven/
-CMD java -Dspring.profiles.active="docker" -jar \
-/maven/card-service.jar server \
-/maven/docker-config.yml
