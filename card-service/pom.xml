@@ -14,7 +14,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <start-class>br.com.api.user.CardApplication</start-class>
+        <start-class>co.com.api.credibanco.transaction.CardApplication</start-class>
         <mysql.version>8.0.32</mysql.version>
     </properties>
 
@@ -57,6 +57,7 @@
             <version>5.4.0</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
 
@@ -70,26 +71,7 @@
                     <excludeDevtools>false</excludeDevtools>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.8</version>
-                <executions>
-                    <execution>
-                        <id>prepare-agent</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>report</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+
         </plugins>
         <resources>
             <resource>
@@ -106,11 +88,6 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <!--				<spring.datasource.driver-class-name>oracle.jdbc.OracleDriver</spring.datasource.driver-class-name>-->
-                <!--				<spring.jpa.database-platform>org.hibernate.dialect.Oracle12cDialect</spring.jpa.database-platform>-->
-                <!--				<spring.datasource.url>jdbc:oracle:thin:@//localhost:1521/ORCLCDB.localdomain</spring.datasource.url>-->
-                <!--				<spring.datasource.username>ronnie</spring.datasource.username>-->
-                <!--				<spring.datasource.password>123456</spring.datasource.password>-->
                 <spring.datasource.driver-class-name>com.mysql.cj.jdbc.Driver</spring.datasource.driver-class-name>
                 <spring.jpa.database-platform>org.hibernate.dialect.MySQL5InnoDBDialect</spring.jpa.database-platform>
                 <spring.datasource.url>jdbc:mysql://localhost:3336/microservices</spring.datasource.url>
@@ -124,11 +101,6 @@
         <profile>
             <id>docker</id>
             <properties>
-                <!--				<spring.datasource.driver-class-name>oracle.jdbc.OracleDriver</spring.datasource.driver-class-name>-->
-                <!--				<spring.jpa.database-platform>org.hibernate.dialect.Oracle12cDialect</spring.jpa.database-platform>-->
-                <!--				<spring.datasource.url>jdbc:oracle:thin:@//oracle-container:1521/ORCLCDB.localdomain</spring.datasource.url>-->
-                <!--				<spring.datasource.username>ronnie</spring.datasource.username>-->
-                <!--				<spring.datasource.password>123456</spring.datasource.password>-->
                 <spring.datasource.driver-class-name>com.mysql.cj.jdbc.Driver</spring.datasource.driver-class-name>
                 <spring.jpa.database-platform>org.hibernate.dialect.MySQL5InnoDBDialect</spring.jpa.database-platform>
                 <spring.datasource.url>jdbc:mysql://mysql-container:3306/microservices</spring.datasource.url>

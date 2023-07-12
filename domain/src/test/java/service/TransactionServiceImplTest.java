@@ -1,13 +1,13 @@
 package service;
 
-import br.com.domain.entity.card.Card;
-import br.com.domain.entity.transaction.TransacctionPurchaseVO;
-import br.com.domain.entity.transaction.Transaction;
-import br.com.domain.entity.transaction.TransactionResultVO;
-import br.com.domain.entity.transaction.TransactionVO;
-import br.com.domain.repository.CardRepository;
-import br.com.domain.repository.TransactionRepository;
-import br.com.domain.service.TransactionServiceImpl;
+import co.com.api.credibanco.domain.entity.card.Card;
+import co.com.api.credibanco.domain.entity.transaction.TransacctionPurchaseVO;
+import co.com.api.credibanco.domain.entity.transaction.Transaction;
+import co.com.api.credibanco.domain.entity.transaction.TransactionResultVO;
+import co.com.api.credibanco.domain.entity.transaction.TransactionVO;
+import co.com.api.credibanco.domain.repository.CardRepository;
+import co.com.api.credibanco.domain.repository.TransactionRepository;
+import co.com.api.credibanco.domain.service.TransactionServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -60,7 +60,7 @@ class TransactionServiceImplTest {
 
         transaction = Transaction.builder()
                 .card(card)
-                .Id(UUID.randomUUID())
+                .id(UUID.randomUUID())
                 .isValid(true)
                 .transactionDate(LocalDateTime.now())
                 .price(100)

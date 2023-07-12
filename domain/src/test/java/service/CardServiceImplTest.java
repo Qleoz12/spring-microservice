@@ -1,16 +1,16 @@
 package service;
 
-import br.com.domain.entity.Client;
-import br.com.domain.entity.Product;
-import br.com.domain.entity.card.BalanceCard;
-import br.com.domain.entity.card.Card;
-import br.com.domain.entity.card.CardVO;
-import br.com.domain.entity.card.CardVOid;
-import br.com.domain.enums.EnumTypeCard;
-import br.com.domain.exception.rules.RuleException;
-import br.com.domain.repository.CardRepository;
-import br.com.domain.repository.ProductRepository;
-import br.com.domain.service.CardServiceImpl;
+import co.com.api.credibanco.domain.entity.Client;
+import co.com.api.credibanco.domain.entity.Product;
+import co.com.api.credibanco.domain.entity.card.BalanceCard;
+import co.com.api.credibanco.domain.entity.card.Card;
+import co.com.api.credibanco.domain.entity.card.CardVO;
+import co.com.api.credibanco.domain.entity.card.CardVOid;
+import co.com.api.credibanco.domain.enums.EnumTypeCard;
+import co.com.api.credibanco.domain.exception.rules.RuleException;
+import co.com.api.credibanco.domain.repository.CardRepository;
+import co.com.api.credibanco.domain.repository.ProductRepository;
+import co.com.api.credibanco.domain.service.CardServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -72,7 +72,7 @@ class CardServiceImplTest {
         // Verify the result
         assertNotNull(result);
         verify(repository, times(1)).save(captor.capture());
-        assertTrue(result.getCardId().equals(card.getCardId()));
+        assertEquals(result.getCardId(),card.getCardId());
         assertTrue(captor.getValue().getIsBlocked());
         assertEquals(card.getPreviusbalance(), captor.getValue().getPreviusbalance());
     }
@@ -158,7 +158,7 @@ class CardServiceImplTest {
         // Verify the result
         assertNotNull(result);
         verify(spycard, times(1)).activateCard();
-        assertTrue(result.getCardId().equals(card.getCardId()));
+        assertEquals(result.getCardId(),card.getCardId());
         assertTrue(result.getIsActivated());
     }
 
