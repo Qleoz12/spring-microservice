@@ -1,9 +1,8 @@
 package co.com.api.credibanco.domain.util;
 
 import javax.validation.Constraint;
-import javax.validation.*;
+import javax.validation.Payload;
 import javax.validation.constraints.Pattern;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;

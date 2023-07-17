@@ -1,15 +1,16 @@
 package co.com.api.credibanco.domain.service;
 
+import co.com.api.credibanco.domain.converters.ConverterCard;
 import co.com.api.credibanco.domain.entity.Product;
 import co.com.api.credibanco.domain.entity.card.BalanceCard;
+import co.com.api.credibanco.domain.entity.card.Card;
 import co.com.api.credibanco.domain.entity.card.CardVO;
 import co.com.api.credibanco.domain.entity.card.CardVOid;
 import co.com.api.credibanco.domain.enums.EnumErrors;
+import co.com.api.credibanco.domain.enums.EnumNumerics;
 import co.com.api.credibanco.domain.exception.rules.RuleException;
 import co.com.api.credibanco.domain.repository.CardRepository;
 import co.com.api.credibanco.domain.repository.ProductRepository;
-import co.com.api.credibanco.domain.converters.ConverterCard;
-import co.com.api.credibanco.domain.entity.card.Card;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,14 +48,25 @@ public class CardServiceImpl implements CardService {
     public CardVO add(CardVO card) throws RuleException {
         Product product = productRepository.findById(card.getProductId())
                 .orElseThrow(() -> new RuleException("Producto no encontrado"));
-        if(product.getCardId() !=null)
-        {
+        if (product.getCardId() != null) {
             return repository.findById(product.getCardId()).map(ConverterCard::convertCardToVO)
                     .orElseThrow(() -> new RuleException("Problemas con la  tarjeta"));
         }
 
         String fullName = product.getClient().getFullName();
+
+        //logic to avoid retry generate this number
+        Long totalcards = repository.count();
+        if (EnumNumerics.MIDID.getCodigo() <= totalcards) //magic number
+            log.warn("posible dificultad al generar numeros por la cantidad copada " + totalcards);
         String cardNumber = GeneratorCardNumbers.generate(String.valueOf(card.getProductId()));
+        //avoid re calls the endpoint
+        int retrys=0;
+        while (repository.findById(totalcards.toString()).isPresent() || retrys<10) {
+            GeneratorCardNumbers.generate(String.valueOf(card.getProductId()));
+            retrys++;
+        }
+
         LocalDate expirationDate = LocalDate.now().plusYears(3);
 
         Card newCard = repository.save(Card.builder()

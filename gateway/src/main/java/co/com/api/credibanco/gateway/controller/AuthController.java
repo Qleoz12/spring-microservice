@@ -1,15 +1,15 @@
 package co.com.api.credibanco.gateway.controller;
 
-import co.com.api.credibanco.gateway.config.JwtUtil;
-import co.com.api.credibanco.gateway.entities.AuthRequestRefreshToken;
-import co.com.api.credibanco.gateway.entities.AuthRequestToken;
-import co.com.api.credibanco.gateway.entities.AuthResponse;
-import co.com.api.credibanco.web.exception.ResponseException;
 import co.com.api.credibanco.domain.entity.user.UsuarioDTO;
 import co.com.api.credibanco.domain.exception.errors.AutenticacaoException;
 import co.com.api.credibanco.domain.repository.UsuarioRepository;
 import co.com.api.credibanco.domain.security.CryptoUtil;
 import co.com.api.credibanco.domain.util.Constantes;
+import co.com.api.credibanco.gateway.config.JwtUtil;
+import co.com.api.credibanco.gateway.entities.AuthRequestRefreshToken;
+import co.com.api.credibanco.gateway.entities.AuthRequestToken;
+import co.com.api.credibanco.gateway.entities.AuthResponse;
+import co.com.api.credibanco.web.exception.ResponseException;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

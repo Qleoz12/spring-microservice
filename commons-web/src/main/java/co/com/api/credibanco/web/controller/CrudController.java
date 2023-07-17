@@ -1,8 +1,8 @@
 package co.com.api.credibanco.web.controller;
 
-import co.com.api.credibanco.web.exception.ResponseException;
 import co.com.api.credibanco.domain.entity.Entidade;
 import co.com.api.credibanco.domain.service.CrudService;
+import co.com.api.credibanco.web.exception.ResponseException;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

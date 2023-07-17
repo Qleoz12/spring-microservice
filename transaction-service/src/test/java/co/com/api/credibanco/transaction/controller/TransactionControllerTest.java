@@ -1,12 +1,12 @@
 package co.com.api.credibanco.transaction.controller;
 
-import co.com.api.credibanco.web.exception.ResponseException;
 import co.com.api.credibanco.domain.entity.card.CardPurchase;
 import co.com.api.credibanco.domain.entity.transaction.TransacctionPurchaseVO;
 import co.com.api.credibanco.domain.entity.transaction.TransactionResultVO;
 import co.com.api.credibanco.domain.entity.transaction.TransactionVO;
 import co.com.api.credibanco.domain.exception.rules.RuleException;
 import co.com.api.credibanco.domain.service.TransactionService;
+import co.com.api.credibanco.web.exception.ResponseException;
 import com.netflix.appinfo.ApplicationInfoManager;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;

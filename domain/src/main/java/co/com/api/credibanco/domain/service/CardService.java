@@ -1,10 +1,10 @@
 package co.com.api.credibanco.domain.service;
 
 import co.com.api.credibanco.domain.entity.card.BalanceCard;
+import co.com.api.credibanco.domain.entity.card.Card;
 import co.com.api.credibanco.domain.entity.card.CardVO;
 import co.com.api.credibanco.domain.entity.card.CardVOid;
 import co.com.api.credibanco.domain.exception.rules.RuleException;
-import co.com.api.credibanco.domain.entity.card.Card;
 
 public interface CardService extends DeleteService<Card, CardVO, String> {
 

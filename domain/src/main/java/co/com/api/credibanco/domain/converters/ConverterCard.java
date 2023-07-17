@@ -2,10 +2,10 @@ package co.com.api.credibanco.domain.converters;
 
 
 import co.com.api.credibanco.domain.entity.card.BalanceCard;
+import co.com.api.credibanco.domain.entity.card.Card;
 import co.com.api.credibanco.domain.entity.card.CardPurchase;
 import co.com.api.credibanco.domain.entity.card.CardVO;
 import co.com.api.credibanco.domain.enums.EnumTypeCard;
-import co.com.api.credibanco.domain.entity.card.Card;
 
 public class ConverterCard {
 

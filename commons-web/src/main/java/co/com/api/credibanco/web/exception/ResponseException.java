@@ -1,7 +1,7 @@
 package co.com.api.credibanco.web.exception;
 
-import co.com.api.credibanco.web.exception.entity.ErrorResponse;
 import co.com.api.credibanco.domain.exception.rules.RuleException;
+import co.com.api.credibanco.web.exception.entity.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
